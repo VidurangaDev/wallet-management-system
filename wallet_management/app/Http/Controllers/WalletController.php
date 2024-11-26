@@ -13,10 +13,11 @@ class WalletController extends Controller
 
     public function showBalance()
     {
-        // $wallet = Auth::user()->wallet;
-        $wallet = DB::table('wallets')->where('user_id', Auth::id())->first();
+        $wallet = Auth::user()->wallet;
+        // $wallet = DB::table('wallets')->where('user_id', Auth::id())->first();
         // $wallet = DB::table('wallets')->get();
         dd($wallet);
+        
         return view('components.wallet', compact('wallet'));
     }
 

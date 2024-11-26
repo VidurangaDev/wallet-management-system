@@ -1,6 +1,6 @@
 <div class="container">
     {{-- Wallet Balance Display --}}
-    <h2 class="my-4">Wallet Balance: Rs {{ number_format($wallet->balance, 2) }}</h2>
+    <h2 class="my-4">Wallet Balance: Rs 650</h2>
     {{-- {{ number_format($wallet->balance, 2) }} --}}
     <div class="row">
 
