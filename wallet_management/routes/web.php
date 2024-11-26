@@ -19,12 +19,12 @@ Route::middleware([
 });
 
 // Route::get('/wallet', function () {
-//     return view('wallet.index');
-// })->name('wallet.index');
+//     return view('components.wallet');
+// })->name('wallet.balance');
 // Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('wallet.balance');
+    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('components.wallet');
     Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
     Route::post('/wallet/deduct', [WalletController::class, 'deductMoney'])->name('wallet.deduct');
 });
