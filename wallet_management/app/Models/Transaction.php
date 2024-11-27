@@ -10,7 +10,14 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'amount', 'type', 'transaction_date'
+        'user_id',
+         'amount',
+         'type',
+         'transaction_date',
+    ];
+
+    protected $casts = [
+        'transaction_date' => 'datetime',
     ];
 
     public function user()
