@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WalletController;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,13 +18,18 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/transaction', function () {
+    Route::get('/transaction/view', function () {
         return view('transaction');
     })->name('transaction');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('components.wallet');
+    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('wallet.balance');
     Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
     Route::post('/wallet/deduct', [WalletController::class, 'deductMoney'])->name('wallet.deduct');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+});
+

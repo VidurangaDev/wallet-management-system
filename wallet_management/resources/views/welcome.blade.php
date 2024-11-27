@@ -28,7 +28,7 @@
                     <div class="d-flex justify-content-center align-items-center mt-4">
                         @auth
 
-                            <a href="{{ url('/dashboard') }}" class="btn btn-outline-primary mx-2 py-2 px-4 rounded-pill">
+                            <a href="{{ route('wallet.balance') }}" class="btn btn-outline-primary mx-2 py-2 px-4 rounded-pill">
                                 Dashboard
                             </a>
                         @else
