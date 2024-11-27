@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
@@ -65,8 +68,8 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function wallet()
+    public function wallet(): HasOne
     {
-         return $this->hasOne(Wallet::class);
+        return $this->hasOne(Wallet::class, 'user_id', 'id');
     }
 }

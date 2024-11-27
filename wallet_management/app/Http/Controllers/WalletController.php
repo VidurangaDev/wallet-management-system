@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Wallet;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class WalletController extends Controller
@@ -11,17 +13,12 @@ class WalletController extends Controller
 
     public function showBalance()
     {
-        // $wallet = Auth::user()->wallet;
-        // return view('components.wallet', compact('wallet'));
-
-        try {
-
-            $wallet = DB::table('wallet')->get();
-            dd($wallet);
-            // return view('components.wallet', compact('wallet'));
-
-        }
-            catch (Exception $error) { dd($error); }
+        $wallet = Auth::user()->wallet;
+        // $wallet = DB::table('wallets')->where('user_id', Auth::id())->first();
+        // $wallet = DB::table('wallets')->get();
+        dd($wallet);
+        
+        return view('components.wallet', compact('wallet'));
     }
 
     public function addMoney(Request $request)

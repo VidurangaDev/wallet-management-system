@@ -16,15 +16,14 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/transaction', function () {
+        return view('transaction');
+    })->name('transaction');
 });
 
-// Route::get('/wallet', function () {
-//     return view('wallet.index');
-// })->name('wallet.index');
-// Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
-
 Route::middleware(['auth'])->group(function () {
-    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('wallet.balance');
+    Route::get('/wallet', [WalletController::class, 'showBalance'])->name('components.wallet');
     Route::post('/wallet/add', [WalletController::class, 'addMoney'])->name('wallet.add');
     Route::post('/wallet/deduct', [WalletController::class, 'deductMoney'])->name('wallet.deduct');
 });

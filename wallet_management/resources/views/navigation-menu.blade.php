@@ -12,8 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link class="text-decoration-none" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Wallet') }}
+                    </x-nav-link>
+
+                    <x-nav-link class="text-decoration-none" href="{{ route('transaction') }}" :active="request()->routeIs('transaction')">
+                        {{ __('Transaction History') }}
+                    </x-nav-link>
+
+                    <x-nav-link class="text-decoration-none" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Reports') }}
                     </x-nav-link>
                 </div>
             </div>
