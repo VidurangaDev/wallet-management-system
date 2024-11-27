@@ -44,7 +44,7 @@
                         </div>
                     </form>
 
-                    <!-- Transactions Table -->
+
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover mt-4">
                             <thead class="table-dark">
@@ -58,7 +58,7 @@
                                 @forelse($transactions as $transaction)
                                     <tr>
                                         <td>{{ $transaction->transaction_date->format('Y-m-d') }}</td>
-                                        <td>${{ number_format($transaction->amount, 2) }}</td>
+                                        <td>Rs {{ number_format($transaction->amount, 2) }}</td>
                                         <td>{{ ucfirst($transaction->type) }}</td>
                                     </tr>
                                 @empty
@@ -70,7 +70,7 @@
                         </table>
                     </div>
 
-                    <!-- Pagination Links -->
+
                     <div class="d-flex justify-content-center mt-4">
                         {{ $transactions->links('pagination::bootstrap-5') }}
                     </div>
