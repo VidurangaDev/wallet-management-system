@@ -30,8 +30,8 @@
                                 </tbody>
                             </table>
 
-                            {{-- <a href="{{ route('reports.export.pdf') }}" class="btn btn-primary">Download as PDF</a>
-                            <a href="{{ route('reports.export.csv') }}" class="btn btn-secondary">Download as CSV</a> --}}
+                            <a href="{{ route('reports.export.pdf') }}" class="btn btn-primary">Download as PDF</a>
+                            <a href="{{ route('reports.export.csv') }}" class="btn btn-secondary">Download as CSV</a>
                         </div>
                     </div>
                 </div>
