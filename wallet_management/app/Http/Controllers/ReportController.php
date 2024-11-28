@@ -35,7 +35,7 @@ class ReportController extends Controller
         $userId = Auth::id();
         $totalCredits = Transaction::where('user_id', $userId)->where('type', 'credit')->sum('amount');
         $totalDebits = Transaction::where('user_id', $userId)->where('type', 'debit')->sum('amount');
-        $remainingBalance = $totalCredits - $totalDebits;
+        $remainingBalance = $totalDebits - $totalCredits;
 
         $pdf = Pdf::loadView('reports.pdf', compact('totalCredits', 'totalDebits', 'remainingBalance'));
         return $pdf->download('summary_report.pdf');

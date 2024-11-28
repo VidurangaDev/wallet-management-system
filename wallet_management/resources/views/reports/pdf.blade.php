@@ -21,15 +21,15 @@
     <table>
         <thead>
             <tr>
-                <th>Total Credits</th>
                 <th>Total Debits</th>
+                <th>Total Credits</th>
                 <th>Remaining Balance</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ $totalCredits }}</td>
                 <td>{{ $totalDebits }}</td>
+                <td>{{ $totalCredits }}</td>
                 <td>{{ $remainingBalance }}</td>
             </tr>
         </tbody>
