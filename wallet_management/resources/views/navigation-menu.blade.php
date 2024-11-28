@@ -20,7 +20,7 @@
                         {{ __('Transaction History') }}
                     </x-nav-link>
 
-                    <x-nav-link class="text-decoration-none" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link class="text-decoration-none" href="{{ route('reports.summary') }}" :active="request()->routeIs('reports.summary')">
                         {{ __('Reports') }}
                     </x-nav-link>
                 </div>

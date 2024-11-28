@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TransactionController;
 
@@ -34,5 +35,11 @@ Route::middleware([
 
 Route::middleware('auth')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reports/summary', [ReportController::class, 'summary'])->name('reports.summary');
+    Route::get('/reports/export/pdf', [ReportController::class, 'exportPDF'])->name('reports.export.pdf');
+    Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('reports.export.csv');
 });
 
