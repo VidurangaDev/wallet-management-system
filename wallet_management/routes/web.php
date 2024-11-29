@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\CheckIfAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TransactionController;
@@ -42,4 +45,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reports/export/pdf', [ReportController::class, 'exportPDF'])->name('reports.export.pdf');
     Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('reports.export.csv');
 });
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users/{user}/transactions', [UserController::class, 'showTransactions'])->name('admin.transactions');
+    
+});
+
+// Route::middleware('auth', 'CheckIfAdmin')->group(function () {
+//     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+//     Route::get('/admin/users/{user}/transactions', [UserController::class, 'showTransactions'])->name('admin.transactions');
+// });
+
+
+
+
 
