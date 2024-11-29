@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\CheckIfAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
@@ -46,6 +48,17 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    // Add other admin routes here
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users/{user}/transactions', [UserController::class, 'showTransactions'])->name('admin.transactions');
+    
 });
+
+// Route::middleware('auth', 'CheckIfAdmin')->group(function () {
+//     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+//     Route::get('/admin/users/{user}/transactions', [UserController::class, 'showTransactions'])->name('admin.transactions');
+// });
+
+
+
+
 

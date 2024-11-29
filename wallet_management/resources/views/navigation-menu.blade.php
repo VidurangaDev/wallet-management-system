@@ -12,6 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
+                    @if(Auth::user()->is_admin)
                     <x-nav-link class="text-decoration-none" href="{{ route('wallet.balance') }}" :active="request()->routeIs('wallet.balance')">
                         {{ __('Wallet') }}
                     </x-nav-link>
@@ -23,6 +25,25 @@
                     <x-nav-link class="text-decoration-none" href="{{ route('reports.summary') }}" :active="request()->routeIs('reports.summary')">
                         {{ __('Reports') }}
                     </x-nav-link>
+
+                    <x-nav-link class="text-decoration-none" href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+
+                    @else
+                    <x-nav-link class="text-decoration-none" href="{{ route('wallet.balance') }}" :active="request()->routeIs('wallet.balance')">
+                        {{ __('Wallet') }}
+                    </x-nav-link>
+
+                    <x-nav-link class="text-decoration-none" href="{{ route('transactions.index') }}" :active="request()->routeIs('transactions.index')">
+                        {{ __('Transaction History') }}
+                    </x-nav-link>
+
+                    <x-nav-link class="text-decoration-none" href="{{ route('reports.summary') }}" :active="request()->routeIs('reports.summary')">
+                        {{ __('Reports') }}
+                    </x-nav-link>
+
+                    @endif
                 </div>
             </div>
 
